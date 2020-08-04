@@ -1,0 +1,36 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineRun
+metadata:
+  name: voting-api-pipelinerun
+spec:
+  serviceAccount: pipeline-sa
+  pipelineRef:
+    name: generic-cicd-pipeline
+  resources:
+    - name: pipeline-source-repo
+      resourceRef:
+        name: voting-api-src
+
+    - name: pipeline-built-image
+      resourceRef:
+        name: voting-api-image
+
+    - name: pipeline-source-repo-cicd
+      resourceRef:
+        name: voting-api-src
+
+  params:
+    - name: p-pathToDockerFile
+      value: Dockerfile
+
+    - name: p-pathToContext
+      value: .
+
+    - name: p-yamlFile
+      value: "yaml-manifests/voting-api-deployment-manifest.yaml"
+
+    - name: p-yamlImagePath
+      value: "spec.template.spec.containers[0].image"
+
+    - name: p-yamls
+      value: "yaml-manifests"

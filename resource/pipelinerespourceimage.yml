@@ -1,0 +1,9 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: voting-ui
+spec:
+  type: image
+  params:
+    - name: url
+      value: docker.io/jins951851/votingapp
