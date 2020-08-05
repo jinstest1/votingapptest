@@ -4,7 +4,7 @@ metadata:
   name: generic-cicd-pipeline
 spec:
   resources:
-    - name: pipeline-source-repo
+    - name: git-source
       type: git
 
     - name: pipeline-built-image
@@ -36,8 +36,8 @@ spec:
 
       resources:
         inputs:
-          - name: source-repo
-            resource: pipeline-source-repo
+          - name: git-source
+            resource: git-source
 
         outputs:
           - name: destImage
