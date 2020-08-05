@@ -5,17 +5,21 @@ metadata:
 spec:
   inputs:
     resources:
-      - name: source-repo
+      - name: git-source
         type: git
 
     params:
       - name: pathToContext
-        description: The build context used by Kaniko
-        default: .
+        type: string
+        description:
+          The build context used by Kaniko
+          (https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts)
+        default: /workspace/vote
 
       - name: pathToDockerFile
+        type: string
         description: The path to the dockerfile to build
-        default: Dockerfile
+        default: /workspace/vote/Dockerfile
 
   outputs:
     resources:
@@ -28,8 +32,8 @@ spec:
       command:
         - /kaniko/executor
       args:
-        - --context=/workspace/source-repo/${inputs.params.pathToContext}
-        - --dockerfile=/workspace/source-repo/${inputs.params.pathToDockerFile}
+        - --context=${inputs.params.pathToContext}
+        - --dockerfile=${inputs.params.pathToDockerFile}
         - --destination=${outputs.resources.destImage.url}
       volumeMounts:
         - name: varlibcontainers
