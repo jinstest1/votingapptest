@@ -6,19 +6,19 @@ spec:
   pipelineRef:
     name: generic-cicd-pipeline
   resources:
-   - name: git-source
-     resourceRef:
+    - name: git-source
+      resourceRef:
         name: voting-ui-vote
 
-   - name: pipeline-built-image
+    - name: pipeline-built-image
       resourceRef:
         name: result-ui
 
-   - name: pipeline-source-repo-cicd
+    - name: pipeline-source-repo-cicd
       resourceRef:
         name: voting-ui-vote
 
- params:
+  params:
     - name: p-pathToDockerFile
       value: Dockerfile
 
