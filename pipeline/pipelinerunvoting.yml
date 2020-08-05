@@ -21,10 +21,10 @@ spec:
 
   params:
     - name: p-pathToDockerFile
-      value: Dockerfile
+      value: vote/Dockerfile
 
     - name: p-pathToContext
-      value: .
+      value: vote/
 
     - name: p-yamlFile
       value: "manifest/deployment.yaml"
