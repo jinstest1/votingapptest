@@ -8,4 +8,4 @@ spec:
     - name: revision
       value: master
     - name: url
-      value: https://github.com/vijesh-v/example-voting-app
+      value: https://github.com/jinstest1/votingapptest
