@@ -5,32 +5,31 @@ metadata:
 spec:
   pipelineRef:
     name: generic-cicd-pipeline
-  inputs:
-    resources:
-      - name: git-source
-        resourceRef:
-          name: voting-ui-vote
+  resources:
+   - name: git-source
+     resourceRef:
+        name: voting-ui-vote
 
-      - name: pipeline-built-image
-        resourceRef:
-          name: result-ui
+   - name: pipeline-built-image
+      resourceRef:
+        name: result-ui
 
-      - name: pipeline-source-repo-cicd
-        resourceRef:
-          name: voting-ui-vote
+   - name: pipeline-source-repo-cicd
+      resourceRef:
+        name: voting-ui-vote
 
-    params:
-      - name: p-pathToDockerFile
-        value: Dockerfile
+ params:
+    - name: p-pathToDockerFile
+      value: Dockerfile
 
-      - name: p-pathToContext
-        value: /workspace/git-source
+    - name: p-pathToContext
+      value: /workspace/git-source
 
-      - name: p-yamlFile
-        value: "manifest/deployment.yaml"
+    - name: p-yamlFile
+      value: "manifest/deployment.yaml"
 
-      - name: p-yamlImagePath
-        value: "spec.template.spec.containers[0].image"
+    - name: p-yamlImagePath
+      value: "spec.template.spec.containers[0].image"
 
-      - name: p-yamls
-        value: "manifest"
+    - name: p-yamls
+      value: "manifest"
