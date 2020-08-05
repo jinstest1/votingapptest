@@ -28,8 +28,8 @@ spec:
       command:
         - /kaniko/executor
       args:
-        - --context=/workspace/source-repo/${inputs.params.pathToContext}
-        - --dockerfile=/workspace/source-repo/${inputs.params.pathToDockerFile}
+        - --context=/workspace/${inputs.params.pathToContext}
+        - --dockerfile=/vote/${inputs.params.pathToDockerFile}
         - --destination=${outputs.resources.destImage.url}
       volumeMounts:
         - name: varlibcontainers
