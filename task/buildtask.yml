@@ -14,12 +14,12 @@ spec:
         description:
           The build context used by Kaniko
           (https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts)
-        default: /workspace/vote
+        default: .
 
       - name: pathToDockerFile
         type: string
         description: The path to the dockerfile to build
-        default: /workspace/vote/Dockerfile
+        default: ./Dockerfile
 
   outputs:
     resources:
@@ -32,7 +32,7 @@ spec:
       command:
         - /kaniko/executor
       args:
-        - --context=${inputs.params.pathToContext}
+        - --context=/workspace/votingapptest/vote${inputs.params.pathToContext}
         - --dockerfile=${inputs.params.pathToDockerFile}
         - --destination=${outputs.resources.destImage.url}
       volumeMounts:
